@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>투표목록이 나와야하는데</h1>
+    <!--index함수에서 질문의 목록을 줘야지 그걸 출력할수있지-->
+    <!--Question이라는 클래스(models.py)에 객체 3마리가 생성되서
+    한꺼번에 받아야하니까 리스트 안에 넣어서 받아야함-->
+    {% if latest_question_list %}  <!--탬플릿 내에서만 사용할 수 있는 특이한 형태의 html 탬플릿 태그-->
+        <p>출력할 목록이 있어요</p>
+        <ul>
+            {% for question in latest_question_list %}
+                <li><a href="/polls/{{question.id}}"> {{ question.question_text }} </a></li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>출력할 투표항목이 존재하지 않아요</p>
+    {% endif %}
+
+</body>
+</html>
